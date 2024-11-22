@@ -3,45 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Register or Login</title>
+    <link rel="stylesheet" href="registration.css">
 </head>
 <body>
+    <div class="card">
+        <h1 class="form-title">Register or Login</h1>
+        <form id="registerForm">
+            <div class="form-group">
+                <label for="regUsername">Username</label>
+                <input type="text" id="regUsername" required>
+            </div>
+            <div class="form-group">
+                <label for="regPassword">Password</label>
+                <input type="password" id="regPassword" required>
+            </div>
+            <div class="form-group">
+                <label for="regGmail">Email</label>
+                <input type="email" id="regGmail" required>
+            </div>
 
-    <h1>Register</h1>
-    <form id="registerForm">
-        <label for="regUsername">Username:</label>
-        <input type="text" id="regUsername" required><br><br>
+            <button type="submit" id="registerButton">Register</button>
 
-        <label for="regPassword">Password:</label>
-        <input type="password" id="regPassword" required><br><br>
+            <div class="separator">
+                <span>OR</span>
+            </div>
 
-        <label for="regGmail">Gmail:</label>
-        <input type="email" id="regGmail" required><br><br>
-
-        <button type="submit">Register</button>
-    </form>
-
+            <button type="button" id="loginButton">Login</button>
+        </form>
+    </div>
+    
     <script>
-        document.getElementById('registerForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+        document.addEventListener("DOMContentLoaded", function() {
+    const registerForm = document.getElementById("registerForm");
+    const registerButton = document.getElementById("registerButton");
+    const loginButton = document.getElementById("loginButton");
 
-            const regUsername = document.getElementById('regUsername').value;
-            const regPassword = document.getElementById('regPassword').value;
-            const regGmail = document.getElementById('regGmail').value;
+    registerForm.addEventListener("submit", function(event) {
+        event.preventDefault();
 
-            localStorage.setItem('username', regUsername);
-            localStorage.setItem('password', regPassword);
-            localStorage.setItem('gmail', regGmail);
+        const regUsername = document.getElementById("regUsername").value;
+        const regPassword = document.getElementById("regPassword").value;
+        const regGmail = document.getElementById("regGmail").value;
 
-            console.log('Stored in localStorage:');
-            console.log('Username:', localStorage.getItem('username'));
-            console.log('Password:', localStorage.getItem('password'));
-            console.log('Gmail:', localStorage.getItem('gmail'));
+        localStorage.setItem("username", regUsername);
+        localStorage.setItem("password", regPassword);
+        localStorage.setItem("gmail", regGmail);
 
-            alert('Registration successful! Redirecting to login page...');
-            window.location.href = 'login.html'; 
-        });
+        alert("Registration successful!");
+        window.location.href = "login.html"; 
+    });
+
+    loginButton.addEventListener("click", function() {
+        window.location.href = "login.html";
+    });
+});
+
     </script>
-
 </body>
 </html>
